@@ -1,1 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>متجر المكسرات</title>
+  <!-- خط عربي لطيف -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* اللون الأساسي: أخضر فستقي */
+      --pistachio:#7BB661;   /* يمكن تعديله حسب الهوية */
+      --pistachio-600:#6AA153;
+      --pistachio-700:#5B8C47;
+      --dark:#1f2937;
+      --muted:#6b7280;
+      --bg:#f7faf7;
+      --card:#ffffff;
+      --accent:#f1f8ee;
+      --radius:16px;
+      --shadow:0 10px 20px rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--dark);font-family:"Tajawal", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* الشريط العلوي */
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(180%) blur(8px);
+      background:linear-gradient(to bottom, rgba(255,255,255,.9), rgba(255,255,255,.7));
+      border-bottom:1px solid #e5efe3;
+    }
+    .nav{
+      max-width:1200px;margin:auto;display:flex;align-items:center;gap:24px;
+      padding:12px 20px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--pistachio)}
+    .brand .logo{width:40px;height:40px;border-radius:10px;background:transparent;display:block;object-fit:contain;box-shadow:var(--shadow)}
+    .nav-links{margin-inline-start:auto;display:flex;gap:18px;flex-wrap:wrap}
+    .nav a{padding:8px 12px;border-radius:10px}
+    .nav a:hover{background:var(--accent)}
+    .cta{background:var(--pistachio);color:#fff}
+    .cta:hover{background:var(--pistachio-600)}
+
+    /* البطل */
+    .hero{max-width:1200px;margin:24px auto 8px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:0 20px}
+    .hero-card{background:linear-gradient(135deg, var(--pistachio), var(--pistachio-700));color:#fff;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+    .hero h1{margin:0 0 8px;font-size:32px}
+    .hero p{margin:0 0 16px;opacity:.95}
+    .hero .search{display:flex;background:#fff;border-radius:12px;overflow:hidden}
+    .hero input{flex:1;padding:12px 14px;border:0;outline:0;font-family:inherit}
+    .hero button{border:0;background:var(--pistachio-700);color:#fff;padding:12px 16px;cursor:pointer}
+
+    .hero-media{background:var(--card);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}
+
+    /* الأقسام */
+    section{scroll-margin-top:90px}
+    .section{max-width:1200px;margin:24px auto;padding:0 20px}
+    .section-title{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+    .section-title h2{margin:0;font-size:24px}
+    .pill{background:var(--accent);color:var(--pistachio-700);padding:6px 10px;border-radius:999px;font-size:13px}
+
+    /* قائمة المنتجات */
+    .grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:18px}
+    .card{background:var(--card);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .thumb{aspect-ratio:1/1;border-radius:12px;background:#eef5ea;overflow:hidden}
+    .title{font-weight:700;margin:10px 0 4px}
+    .price{color:var(--pistachio-700);font-weight:700}
+    .add{margin-top:auto;background:var(--pistachio);color:#fff;border:0;border-radius:10px;padding:10px 12px;cursor:pointer}
+    .add:hover{background:var(--pistachio-600)}
+
+    /* عن المتجر */
+    .about{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+
+    /* تذييل */
+    footer{margin-top:32px;padding:18px 20px;background:#f0f6ee;color:#46613b}
+    footer .row{max-width:1200px;margin:auto;display:flex;gap:16px;align-items:center;justify-content:space-between}
+
+    /* تجاوب */
+    @media (max-width: 980px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}}
+    @media (max-width: 680px){.grid{grid-template-columns:repeat(2,1fr)}.nav-links{gap:8px}}
+    @media (max-width: 430px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <!-- الشريط العلوي: الأقسام + من نحن + الشراء -->
+  <header>
+    <nav class="nav">
+      <a href="#" class="brand" aria-label="متجر المكسرات">
+        <img class="logo" src="logo_pistachio.svg" alt="شعار المتجر" />
+        <span>متجر المكسرات</span>
+      </a>
+      <div class="nav-links">
+        <a href="#types">أنواع المكسرات</a>
+        <a href="#about">من نحن</a>
+        <a href="#shop" class="cta">الشراء</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- قسم البطل / ترحيب -->
+  <div class="hero">
+    <div class="hero-card">
+      <h1>طعم طبيعي وصحة في كل حبة</h1>
+      <p>أفضل تشكيلة من المكسرات الطازجة المحمّصة بعناية. اطلب الآن واستمتع بتوصيل سريع وجودة مضمونة.</p>
+      <div class="search" role="search">
+        <input type="search" id="searchInput" placeholder="ابحث عن: فستق، لوز، كاجو…" aria-label="بحث عن منتج" />
+        <button onclick="filterProducts()" aria-label="تطبيق البحث">بحث</button>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1590080876138-cac52f0c8c5f?q=80&w=1200&auto=format&fit=crop" alt="وعاء مكسرات طازجة" />
+    </div>
+  </div>
+
+  <!-- أنواع المكسرات / المتجر -->
+  <section id="types" class="section">
+    <div class="section-title">
+      <span class="pill">القائمة</span>
+      <h2>أنواع المكسرات</h2>
+    </div>
+
+    <div class="grid" id="productGrid">
+      <!-- بطاقة منتج: استبدل الصور بأسعارك الفعلية -->
+      <article class="card" data-title="فستق">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1575550959106-5a7defe28b56?q=80&w=1200&auto=format&fit=crop" alt="فستق" />
+        </div>
+        <div class="title">فستق محمّص</div>
+        <div class="price">₪ 18.00 / 100غ</div>
+        <button class="add" onclick="addToCart('فستق محمّص', 18)">أضف للسلة</button>
+      </article>
+
+      <article class="card" data-title="لوز">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1601493700631-2f96f598a9a0?q=80&w=1200&auto=format&fit=crop" alt="لوز" />
+        </div>
+        <div class="title">لوز ممتاز</div>
+        <div class="price">₪ 14.00 / 100غ</div>
+        <button class="add" onclick="addToCart('لوز ممتاز', 14)">أضف للسلة</button>
+      </article>
+
+      <article class="card" data-title="كاجو">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1615486511421-c37a6c63d3e9?q=80&w=1200&auto=format&fit=crop" alt="كاجو" />
+        </div>
+        <div class="title">كاجو مالح</div>
+        <div class="price">₪ 22.00 / 100غ</div>
+        <button class="add" onclick="addToCart('كاجو مالح', 22)">أضف للسلة</button>
+      </article>
+
+      <article class="card" data-title="بندق">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1602757411061-3c1a5b0b9cfb?q=80&w=1200&auto=format&fit=crop" alt="بندق" />
+        </div>
+        <div class="title">بندق محمّص</div>
+        <div class="price">₪ 20.00 / 100غ</div>
+        <button class="add" onclick="addToCart('بندق محمّص', 20)">أضف للسلة</button>
+      </article>
+
+      <article class="card" data-title="جوز">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1601000938259-d8b7921c5112?q=80&w=1200&auto=format&fit=crop" alt="عين الجمل / جوز" />
+        </div>
+        <div class="title">عين الجمل</div>
+        <div class="price">₪ 25.00 / 100غ</div>
+        <button class="add" onclick="addToCart('عين الجمل', 25)">أضف للسلة</button>
+      </article>
+
+      <article class="card" data-title="فول سوداني">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1605482569153-3284dcaf4dd4?q=80&w=1200&auto=format&fit=crop" alt="فول سوداني" />
+        </div>
+        <div class="title">فول سوداني</div>
+        <div class="price">₪ 8.00 / 100غ</div>
+        <button class="add" onclick="addToCart('فول سوداني', 8)">أضف للسلة</button>
+      </article>
+
+      <article class="card" data-title="مكسرات مشكلة">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1625940647693-0f1e808d07e1?q=80&w=1200&auto=format&fit=crop" alt="مكسرات مشكلة" />
+        </div>
+        <div class="title">مكس بريميوم</div>
+        <div class="price">₪ 24.00 / 100غ</div>
+        <button class="add" onclick="addToCart('مكس بريميوم', 24)">أضف للسلة</button>
+      </article>
+
+      <article class="card" data-title="زبيب">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1615486511438-884e758877a7?q=80&w=1200&auto=format&fit=crop" alt="زبيب" />
+        </div>
+        <div class="title">زبيب ذهبي</div>
+        <div class="price">₪ 6.00 / 100غ</div>
+        <button class="add" onclick="addToCart('زبيب ذهبي', 6)">أضف للسلة</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- الشراء / تواصل -->
+  <section id="shop" class="section">
+    <div class="section-title">
+      <span class="pill">اطلب الآن</span>
+      <h2>الشراء والتواصل</h2>
+    </div>
+    <div class="about">
+      <form onsubmit="event.preventDefault(); alert('شكرًا لطلبك! سنتواصل معك لتأكيد التفاصيل.');">
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+          <label>الاسم
+            <input required type="text" placeholder="اسمك" style="width:100%;padding:10px;border:1px solid #dbe7d7;border-radius:10px;margin-top:6px" />
+          </label>
+          <label>رقم الهاتف
+            <input required type="tel" placeholder="07xxxxxxx" style="width:100%;padding:10px;border:1px solid #dbe7d7;border-radius:10px;margin-top:6px" />
+          </label>
+          <label style="grid-column:1/-1">العنوان
+            <input type="text" placeholder="المدينة / المنطقة / الشارع" style="width:100%;padding:10px;border:1px solid #dbe7d7;border-radius:10px;margin-top:6px" />
+          </label>
+          <label style="grid-column:1/-1">ملاحظات الطلب
+            <textarea rows="3" placeholder="مثال: بدون ملح، طحن خشن…" style="width:100%;padding:10px;border:1px solid #dbe7d7;border-radius:10px;margin-top:6px"></textarea>
+          </label>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;margin-top:12px">
+          <button type="submit" class="add" style="font-size:16px">تأكيد الطلب</button>
+          <span style="color:var(--muted);font-size:14px">سنتصل بك لتأكيد السعر النهائي ووقت التوصيل.</span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- من نحن -->
+  <section id="about" class="section">
+    <div class="section-title">
+      <span class="pill">الثقة أولاً</span>
+      <h2>من نحن</h2>
+    </div>
+    <div class="about">
+      <p>
+        نحن متجر مختص بالمكسرات الطازجة ذات الجودة العالية. نختار المحاصيل بعناية ونحمّصها محليًا لضمان النكهة والقوام المثاليين. هويتنا اللونية الأخضر الفستقي تعبّر عن الطبيعة، الطزاجة، والصحة.
+      </p>
+      <ul>
+        <li>تحميص يومي وتغليف محكم.</li>
+        <li>خيارات بدون ملح وبدون سكر.</li>
+        <li>توصيل داخل المدينة خلال 24 ساعة.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="row">
+      <div>© <span id="year"></span> متجر المكسرات</div>
+      <div>واتساب: <a href="https://wa.me/07711842993" target="_blank" rel="noopener">+9647711842993</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // سنة ديناميكية في التذييل
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // بحث بسيط بالاسم
+    function filterProducts(){
+      const q = (document.getElementById('searchInput').value || '').trim();
+      const cards = Array.from(document.querySelectorAll('#productGrid .card'));
+      if(!q){ cards.forEach(c=>c.style.display=''); return; }
+      const re = new RegExp(q, 'i');
+      cards.forEach(c => {
+        const t = (c.dataset.title || '').toLowerCase();
+        c.style.display = re.test(t) ? '' : 'none';
+      });
+    }
+
+    // سلة بسيطة (تنبيه فقط — يمكن لاحقًا ربطها ببايبال/سترايب)
+    function addToCart(name, price){
+      alert(`تم إضافة "${name}" إلى السلة. السعر: ₪ ${price.toFixed(2)} / 100غ`);
+    }
+
+    // تمرير ناعم للرابط
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+  </script>
+</body>
+</html>
 
